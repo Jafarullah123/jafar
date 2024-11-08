@@ -1,0 +1,34 @@
+questions  = [
+    {"question":"What is the capital of India?", "option":["a. Bihar", "b. UP", "c. Mumbai", "d. Delhi"], "answer":"D"}, 
+    {"question":"What is the name of your pet?", "option":["a. Dog", "b. Cat", "c. Buffalo", "d. Cow"], "answer":"D"},
+    {"question":"Who is your favorite actor?", "option":["a. Salman K", "b. Shahrukh K", "c. Aamir", "d. Modi"], "answer":"B"},
+    {"question":"Who is your favorite cricketer?", "option":["a. Virat K", "b. Rohit S", "c. KL Rahul", "d. Hardik"], "answer":"B"},
+    {"question":"What is the name of your roommate?", "option":["a. Saurav", "b. Gaurav", "c. Aftab", "d. Himansu"], "answer":"C"},
+]
+
+amounts = [1000, 5000, 10000, 50000, 100000]
+
+def ask_question(question_data, amount):
+    print(f"\nFor ₹{amount}:")
+    print(question_data["question"])
+    for option in question_data["option"]:
+        print(option)
+    user_answer = input("Enter your answer (A, B, C, or D): ").strip().upper()
+    return user_answer == question_data["answer"]
+
+def play_game():
+    total_winnings = 0
+    
+    for i in range(len(questions)):
+        correct = ask_question(questions[i], amounts[i])
+        if correct:
+            print(f"Correct! You've won ₹{amounts[i]}!")
+            total_winnings = amounts[i]
+        else:
+            print("Sorry, that's incorrect.")
+            break
+    
+    print(f"\nCongratulations! You're taking home ₹{total_winnings}.")
+
+# Start the game
+play_game()
